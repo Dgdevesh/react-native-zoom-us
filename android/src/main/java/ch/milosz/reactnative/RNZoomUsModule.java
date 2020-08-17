@@ -75,6 +75,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
     final int userType,
     final String zoomAccessToken,
     final String zoomToken,
+    Boolean noInvite,
     Promise promise
   ) {
     try {
@@ -110,7 +111,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
       params.userId = userId;
       params.userType = userType;
       params.zoomAccessToken = zoomAccessToken;
-//       params.zoomToken = zoomToken;
+      opts.no_invite = noInvite;
 
       int startMeetingResult = meetingService.startMeetingWithParams(reactContext.getCurrentActivity(), params, opts);
       Log.i(TAG, "startMeeting, startMeetingResult=" + startMeetingResult);
@@ -127,6 +128,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
   public void joinMeeting(
     final String displayName,
     final String meetingNo,
+    Boolean noInvite,
     Promise promise
   ) {
     try {
@@ -144,6 +146,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
       JoinMeetingParams params = new JoinMeetingParams();
       params.displayName = displayName;
       params.meetingNo = meetingNo;
+      opts.no_invite = noInvite;
 
       int joinMeetingResult = meetingService.joinMeetingWithParams(reactContext.getCurrentActivity(), params, opts);
       Log.i(TAG, "joinMeeting, joinMeetingResult=" + joinMeetingResult);
@@ -161,6 +164,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
     final String displayName,
     final String meetingNo,
     final String password,
+    Boolean noInvite,
     Promise promise
   ) {
     try {
@@ -179,6 +183,7 @@ public class RNZoomUsModule extends ReactContextBaseJavaModule implements ZoomSD
       params.displayName = displayName;
       params.meetingNo = meetingNo;
       params.password = password;
+      opts.no_invite = noInvite;
 
       int joinMeetingResult = meetingService.joinMeetingWithParams(reactContext.getCurrentActivity(), params, opts);
       Log.i(TAG, "joinMeeting, joinMeetingResult=" + joinMeetingResult);
